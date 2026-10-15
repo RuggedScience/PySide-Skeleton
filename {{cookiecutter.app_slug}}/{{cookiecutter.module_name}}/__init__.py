@@ -1,3 +1,4 @@
+import importlib.metadata
 import sys
 
 try:
@@ -7,13 +8,14 @@ except ImportError:
 
     VERSION = get_version()
 
+metadata = importlib.metadata.metadata("{{cookiecutter.app_slug}}")
 
 # TODO: Update application information
-APP_NAME = "My App"
-APP_DESCRIPTION = "My PySide App!"
-APP_AUTHOR = "John Doe"
-DOMAIN_NAME = "example.com"
-ORGANIZATION_NAME = "My Organization"
+APP_NAME = metadata["Name"]
+APP_DESCRIPTION = metadata["Description"]
+APP_AUTHOR = metadata["Author"]
+DOMAIN_NAME = "{{ cookiecutter.domain }}"
+ORGANIZATION_NAME = "{{ cookiecutter.organization }}"
 
 
 def run():
@@ -22,7 +24,7 @@ def run():
     from PySide6.QtCore import QCommandLineParser
     from PySide6.QtWidgets import QApplication
 
-    from app.widgets.mainwindow import MainWindow
+    from .widgets.mainwindow import MainWindow
 
     # Handle all uncaught exceptions
     sys.excepthook = _exception_hook
@@ -55,4 +57,4 @@ def _exception_hook(exc_type, exc_value, exc_traceback):
         sys.__excepthook__(exc_type, exc_value, exc_traceback)
     else:
         exc_info = (exc_type, exc_value, exc_traceback)
-        logger.exception(f"Uncaught exception", exc_info=exc_info)
+        logger.exception("Uncaught exception", exc_info=exc_info)

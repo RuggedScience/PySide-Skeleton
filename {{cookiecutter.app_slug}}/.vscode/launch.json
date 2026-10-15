@@ -8,10 +8,10 @@
             "name": "Run App",
             "type": "debugpy",
             "request": "launch",
-            "module": "app",
+            "module": "{{ cookiecutter.module_name }}",
             "console": "integratedTerminal",
-            "preLaunchTask": "Compile Resources",
-            "justMyCode": true
+            "justMyCode": true,
+            "preLaunchTask": "Compile"
         }
     ]
 }

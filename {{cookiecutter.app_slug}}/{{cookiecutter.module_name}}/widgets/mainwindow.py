@@ -2,17 +2,19 @@ from PySide6.QtCore import QSettings
 from PySide6.QtGui import QCloseEvent
 from PySide6.QtWidgets import QApplication, QMainWindow
 
-from app.ui.ui_mainwindow import Ui_MainWindow
+from ..utils.assets import get_icon
 
 
 class MainWindow(QMainWindow):
     def __init__(self) -> None:
         super().__init__()
-        self.ui = Ui_MainWindow()
-        self.ui.setupUi(self)
 
         window_title = f"{QApplication.applicationDisplayName()} - {QApplication.applicationVersion()}"
         self.setWindowTitle(window_title)
+
+        window_icon = get_icon("icon.png")
+        self.setWindowIcon(window_icon)
+
         self._load_settings()
 
     def _load_settings(self) -> None:

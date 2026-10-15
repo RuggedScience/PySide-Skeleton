@@ -1,0 +1,66 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Sync",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "sync"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false,
+            },
+            "presentation": {
+                "reveal": "silent",
+                "panel": "shared",
+            },
+            "problemMatcher": []
+        },
+        {
+            "label": "Compile",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "scripts/compile.py",
+            ],
+            "dependsOn": [
+                "Sync"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "Build Executable",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "cxfreeze",
+                "build_exe",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+        },
+        {
+            "label": "Build Installer",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "cxfreeze",
+                "bdist_msi",
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            },
+        }
+    ]
+}

@@ -1,0 +1,67 @@
+[project]
+dynamic = ["version"]
+name = "{{ cookiecutter.app_slug }}"
+description = "{{ cookiecutter.description }}"
+authors = [
+    { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "openpyxl>=3.1.5",
+    "pyside6>=6.11.2",
+    "qtawesome>=1.4.2",
+]
+
+[dependency-groups]
+dev = [
+    "cx-freeze>=8.7.0",
+    "pytest>=9.1.1",
+    "pytest-qt>=4.5.0",
+    "setuptools-scm>=10.2.3",
+]
+
+[build-system]
+requires = ["setuptools>=61.0", "cx_Freeze>=8.7.0", "setuptools_scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["{{ cookiecutter.module_name }}"]
+
+[tool.setuptools_scm]
+version_file = "{{ cookiecutter.module_name }}/_version.py"
+
+[[tool.cxfreeze.executables]]
+script = "main.py"
+base ="gui"
+icon = "{{ cookiecutter.module_name }}/resources/icons/icon.ico"
+target-name = "{{ cookiecutter.app_name }}"
+shortcut-name = "{{ cookiecutter.app_name }}"
+shortcut-dir = "ProgramMenuSubFolder"
+
+[tool.cxfreeze.build_exe]
+zip_include_packages = ["encoder", "PySide6"]
+include_msvcr = true
+excludes = [
+    "tkinter",
+    "wheel",
+    "setuptools",
+    "setuptools_scm",
+    "email",
+    "unittest",
+    "html",
+    "http",
+    "xml",
+]
+
+[tool.cxfreeze.bdist_msi]
+initial-target-dir = '[ProgramFiles64Folder]Rugged Science\BomDiff'
+upgrade_code = "{{ '{' ~ cookiecutter._upgrade_code | upper ~ '}' }}"
+install_icon = "{{ cookiecutter.module_name }}/resources/icons/icon.ico"
+
+# https://learn.microsoft.com/en-us/windows/win32/msi/directory-table
+[tool.cxfreeze.bdist_msi.data]
+Directory = [
+    ["ProgramMenuFolder", "TARGETDIR", "."],
+    ["ProgramMenuSubFolder", "ProgramMenuFolder", "{{ cookiecutter.organization }}"],
+]

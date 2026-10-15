@@ -1,0 +1,12 @@
+{
+  "app_name": "PySide Skeleton",
+  "app_slug": "{{ cookiecutter.app_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "module_name": "{{ cookiecutter.app_slug }}",
+  "organization": "Rugged Science",
+  "domain": "ruggedscience.com",
+  "description": "PySide6 Skeleton Project",
+  "author_name": "Timothy Lassiter",
+  "author_email": "tim.lassiter@ruggedscience.com",
+  "_extensions": ["cookiecutter.extensions.UUIDExtension"],
+  "_upgrade_code": "{{ uuid4() }}"
+}
