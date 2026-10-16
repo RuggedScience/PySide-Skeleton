@@ -56,7 +56,7 @@ excludes = [
 
 [tool.cxfreeze.bdist_msi]
 initial-target-dir = '[ProgramFiles64Folder]Rugged Science\BomDiff'
-upgrade_code = "{{ '{' ~ cookiecutter._upgrade_code | upper ~ '}' }}"
+upgrade_code = "{{ '{' ~ cookiecutter.__upgrade_code | upper ~ '}' }}"
 install_icon = "{{ cookiecutter.module_name }}/resources/icons/icon.ico"
 
 # https://learn.microsoft.com/en-us/windows/win32/msi/directory-table
