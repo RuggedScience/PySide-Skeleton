@@ -13,9 +13,9 @@ metadata = importlib.metadata.metadata("{{cookiecutter.app_slug}}")
 # TODO: Update application information
 APP_NAME = metadata["Name"]
 APP_DESCRIPTION = metadata["Description"]
-APP_AUTHOR = metadata["Author"]
 DOMAIN_NAME = "{{ cookiecutter.domain }}"
 ORGANIZATION_NAME = "{{ cookiecutter.organization }}"
+APP_AUTHOR = metadata.get("Author") or ORGANIZATION_NAME
 
 
 def run():

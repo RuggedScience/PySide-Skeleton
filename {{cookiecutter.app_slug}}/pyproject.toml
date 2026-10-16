@@ -2,9 +2,11 @@
 dynamic = ["version"]
 name = "{{ cookiecutter.app_slug }}"
 description = "{{ cookiecutter.description }}"
+{%- if cookiecutter.author_name or cookiecutter.author_email %}
 authors = [
-    { name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.author_email }}" },
+    { {% if cookiecutter.author_name %}name = "{{ cookiecutter.author_name }}"{% endif %}{% if cookiecutter.author_name and cookiecutter.author_email %}, {% endif %}{% if cookiecutter.author_email %}email = "{{ cookiecutter.author_email }}"{% endif %} },
 ]
+{%- endif %}
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [

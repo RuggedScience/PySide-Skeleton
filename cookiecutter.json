@@ -5,8 +5,8 @@
   "organization": "Rugged Science",
   "domain": "ruggedscience.com",
   "description": "PySide6 Skeleton Project",
-  "author_name": "Timothy Lassiter",
-  "author_email": "tim.lassiter@ruggedscience.com",
+  "author_name": "",
+  "author_email": "",
   "_extensions": ["cookiecutter.extensions.UUIDExtension"],
   "__upgrade_code": "{{ uuid4() }}"
 }
