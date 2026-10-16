@@ -55,7 +55,7 @@ excludes = [
 ]
 
 [tool.cxfreeze.bdist_msi]
-initial-target-dir = '[ProgramFiles64Folder]Rugged Science\BomDiff'
+initial-target-dir = '[ProgramFiles64Folder]{{ cookiecutter.organization }}\{{ cookiecutter.app_name }}'
 upgrade_code = "{{ '{' ~ cookiecutter.__upgrade_code | upper ~ '}' }}"
 install_icon = "{{ cookiecutter.module_name }}/resources/icons/icon.ico"
 
