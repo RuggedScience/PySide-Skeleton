@@ -9,7 +9,7 @@ def get_asset_path(subfolder: str, filename: str) -> Path:
     Returns the absolute Path to an asset within the package.
     """
 
-    package_path = pkg_resources.files("{{ cookiecutter.module_name }}.assets")
+    package_path = pkg_resources.files("{{ cookiecutter.module_name }}.resources")
     file_path = package_path.joinpath(f"{subfolder}/{filename}")
 
     # The Fail-Fast Check
