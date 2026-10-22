@@ -15,6 +15,27 @@ def init_git_repo():
         subprocess.check_call([
             "git", "commit", "-m", "Initial commit: Scaffolding from template"
         ])
+
+        name = '{{ cookiecutter.author_name }}'
+        email = '{{ cookiecutter.author_email }}'
+        remote = '{{ cookiecutter.git_url }}'
+        if name:
+            try:
+                subprocess.check_call(["git", "config", "--global", "user.name", f'"{name}"'])
+            except subprocess.CalledProcessError:
+                print("\n[WARN] Failed to set git user name.")
+
+        if email:
+            try:
+                subprocess.check_call(["git", "config", "--global", "user.email", f'"{email}"'])
+            except subprocess.CalledProcessError:
+                print("\n[WARN] Failed to set git user email.")
+
+        if remote:
+            try:
+                subprocess.check_call(["git", "remote", "add", "origin", remote])
+            except subprocess.CalledProcessError:
+                print("\n[WARN] Failed to set remote URL.")
         
         print("\n[SUCCESS] Git repository initialized for setuptools_scm!")
         

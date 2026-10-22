@@ -7,6 +7,7 @@
   "description": "PySide6 Skeleton Project",
   "author_name": "",
   "author_email": "",
+  "git_url": "",
   "_extensions": ["cookiecutter.extensions.UUIDExtension"],
   "__upgrade_code": "{{ uuid4() }}"
 }
