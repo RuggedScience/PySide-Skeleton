@@ -48,3 +48,4 @@ def init_git_repo():
 
 if __name__ == "__main__":
     init_git_repo()
+    subprocess.check_call(["uv", "sync"])
